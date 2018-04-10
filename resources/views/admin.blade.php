@@ -23,7 +23,8 @@
 
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li>
-                        <a href="">{{__('Add Numbers')}} <i class="zmdi zmdi-plus"></i></a>
+                        <a onclick="General.modals.events.modal_report_insert_show()">{{__('Add Numbers')}} <i
+                                    class="zmdi zmdi-plus"></i></a>
                     </li>
                     <li>
                         <a href="">{{__('View Dashboard')}} <i class="zmdi zmdi-view-dashboard"></i></a>
@@ -34,18 +35,19 @@
     </div>
     <div class="card">
         <div class="card-header">
-            <h2>Selection Example
-                <small>Ensure that the data attribute [data-identifier="true"] is set on one column header.</small>
+            <h2>{{__('Existing Numbers')}}
+                <small>{{__('List of numbers current available')}}</small>
             </h2>
         </div>
 
         <table id="data-table-admin" class="table table-striped table-vmiddle">
             <thead>
             <tr>
-                <th data-column-id="id" data-type="numeric">{{__('ID')}}</th>
+                <th data-identifier="true" data-column-id="id" data-formatter="id" data-type="numeric">{{__('ID')}}</th>
                 <th data-column-id="name">{{__('NAME')}}</th>
-                <th data-column-id="created_at" data-order="desc">{{__('DATE/HOUR')}}</th>
-                <th data-column-id="commands" data-formatter="commands" data-sortable="false">{{__('Commands')}}</th>
+                <th data-column-id="value" data-order="desc">{{__('VALUE')}}</th>
+                <th data-column-id="created_at" data-formatter="datetime" data-order="desc">{{__('DATE/HOUR')}}</th>
+                <th data-column-id="commands" data-formatter="commands" data-sortable="false">{{__('COMMANDS')}}</th>
             </tr>
             </thead>
             <tbody>
@@ -54,7 +56,10 @@
             </tbody>
         </table>
     </div>
+    @include('modals.reports.edit')
+    @include('modals.reports.insert')
 @endsection
+
 
 @push('js.vendor')
     <script src="{{ asset('vendors/bootgrid/jquery.bootgrid.updated.min.js') }}" defer></script>

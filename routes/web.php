@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/logout', function () {
     try {
         Auth::logout();
@@ -26,5 +28,21 @@ Route::get('/logout', function () {
 Auth::routes();
 
 Route::get('/', 'DashboardController@admin')->name('home');
-Route::any('/data_dashboard', 'DashboardController@dataGet')->name('dataDashboard');
+
+Route::prefix('reports')->group(function () {
+    Route::delete('/', 'DashboardController@deleteReport')->name('removeReport');
+
+    Route::post('/', 'DashboardController@createReport')->name('createReport');
+
+    Route::put('/', 'DashboardController@updateReport')->name('updateReport');
+
+    Route::get('/', 'DashboardController@getReport')->name('getReport');
+
+    Route::any('/data_dashboard', 'DashboardController@dataGet')->name('dataDashboard');
+});
+Route::prefix('dashboard')->group(function () {
+
+    Route::get('/', 'DashboardController@getDash')->name('getDashboard');
+    
+});
 
