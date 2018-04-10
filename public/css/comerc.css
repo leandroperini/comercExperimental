@@ -1,3 +1,6 @@
 .bgm-comerc {
     background-color: #7485f6 !important;
 }
+body.login-content::before {;
+    background: #7485f6;
+}

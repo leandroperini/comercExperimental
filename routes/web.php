@@ -11,16 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::get('/logout', function () {
     try {
         Auth::logout();
     } catch (Exception $e) {
         throw $e;
     } finally {
-        return redirect('/home');
+        return redirect(route('home'));
     }
 
 
@@ -28,8 +25,6 @@ Route::get('/logout', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'DashboardController@admin')->name('home');
+Route::any('/data_dashboard', 'DashboardController@dataGet')->name('dataDashboard');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

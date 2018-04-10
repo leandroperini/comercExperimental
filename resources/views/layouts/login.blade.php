@@ -16,6 +16,7 @@
           rel="stylesheet">
     <link href="{{ asset('css/app.min.1.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.min.2.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/comerc.css') }}" rel="stylesheet">
 </head>
 
 <body class="login-content">
