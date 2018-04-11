@@ -24,7 +24,8 @@ Após configuração do arquivo .env com os acessos de banco será necessário e
 
 ## Live DEMO
 
-Demonstração acessivel em: [http://comerc-exp.tk]
+Demonstração acessível em: http://comerc-exp.tk
+Para o login basta se registrar com qualquer email e poderá navegar pelo projeto.
 
 ## Segurança e Vulnerabilidades
 
