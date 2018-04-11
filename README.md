@@ -24,7 +24,7 @@ Após configuração do arquivo .env com os acessos de banco será necessário e
 
 ## Live DEMO
 
-
+Demonstração acessivel em: [http://comerc-exp.tk]
 
 ## Segurança e Vulnerabilidades
 
