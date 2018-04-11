@@ -1,6 +1,13 @@
 .bgm-comerc {
     background-color: #7485f6 !important;
 }
+.c-verde-comerc {
+    color: #5cf11a !important;
+}
 body.login-content::before {;
     background: #7485f6;
+}
+
+.m-t-44 {
+    margin-top: 44px;
 }

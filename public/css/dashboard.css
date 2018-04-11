@@ -1,0 +1,57 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 90px;
+    overflow: hidden;
+}
+.footer {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 90px;
+}
+
+.footer-inner {
+    list-style: none;
+}
+.footer-inner > li:not(.pull-left) {
+    float: right;
+}
+.footer-inner > li:not(:last-child) {
+    margin-right: -2px;
+}
+
+td{
+    border-right: dashed;
+    border-right-width: 2px;
+}
+
+.f-40 {
+    font-size: 40px;
+}
+.f-50 {
+    font-size: 50px;
+}
+.f-80 {
+    font-size: 80px;
+}
+.f-30 {
+    font-size: 30px;
+}
+
+.box {
+    display: inline-block;
+    width: 150px;
+    height: 75px;
+    margin: 10px;
+    border: 3px solid #73AD21;
+}
+
+.pm-overview {
+    width: auto;
+    min-width: 0;
+}

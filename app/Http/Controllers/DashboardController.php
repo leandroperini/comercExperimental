@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Report;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use SimpleXMLElement;
 
 class DashboardController extends Controller
 {
@@ -89,9 +90,11 @@ class DashboardController extends Controller
         $reportName  = request('name', 0);
         $reportValue = request('value', 0);
 
-        $report        = Report::find($reportId);
-        $report->name  = $reportName;
-        $report->value = $reportValue;
+        $report             = Report::find($reportId);
+        $report->name       = $reportName;
+        $report->value      = $reportValue;
+        $report->updated_at = Carbon::now();
+
         if (!$report->save()) {
             $report = false;
         }
@@ -109,5 +112,67 @@ class DashboardController extends Controller
         return response(json_encode($report))->withHeaders([
                                                                'Content-Type' => 'application/json; charset=ISO-8859-1',
                                                            ]);
+    }
+
+    function getDash()
+    {
+        $reports = Report::take(4)->orderBy('updated_at', 'desc')->orderBy('created_at', 'desc')->get();
+        $curl    = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://exame.abril.com.br/noticias-sobre/mercado-imobiliario/feed/",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_TIMEOUT => 30000,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                // Set Here Your Requesred Headers
+                'Content-Type: application/xml',
+            ),
+        ));
+        $feed = curl_exec($curl);
+        $err  = curl_error($curl);
+        curl_close($curl);
+        if ($err) {
+            error_log("Erro ao obter dados meteorológicos:" . $err);
+        } else {
+
+        }
+        $doc              = new SimpleXmlElement($feed, LIBXML_NOCDATA);
+        $noticia          = $doc->channel->item[0];
+        $noticia->imagem  = $noticia->enclosure->attributes()->url[0];
+        $noticia2         = $doc->channel->item[1];
+        $noticia2->imagem = $noticia2->enclosure->attributes()->url[0];
+
+
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "http://apiadvisor.climatempo.com.br/api/v1/weather/locale/3477/current?token=7c004e896f16469e76abc7858e33989b",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_TIMEOUT => 30000,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                // Set Here Your Requesred Headers
+                'Content-Type: application/json',
+            ),
+        ));
+        $tempo = curl_exec($curl);
+        $err   = curl_error($curl);
+        curl_close($curl);
+        if ($err) {
+            error_log("Erro ao obter dados meteorológicos:" . $err);
+        } else {
+            $tempo = json_decode($tempo);
+        }
+        $tempo->data->date = Carbon::createFromFormat('Y-m-d H:i:s', $tempo->data->date)->format('H:i');
+
+        return view('dashboard', [
+            'reports' => $reports,
+            'tempo' => $tempo,
+            'noticia' => $noticia,
+            'noticia2' => $noticia2,
+
+        ]);
     }
 }

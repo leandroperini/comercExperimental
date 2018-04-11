@@ -27,7 +27,7 @@
                                     class="zmdi zmdi-plus"></i></a>
                     </li>
                     <li>
-                        <a href="">{{__('View Dashboard')}} <i class="zmdi zmdi-view-dashboard"></i></a>
+                        <a href="{{route('getDashboard')}}">{{__('View Dashboard')}} <i class="zmdi zmdi-view-dashboard"></i></a>
                     </li>
                 </ul>
             </li>

@@ -43,6 +43,6 @@ Route::prefix('reports')->group(function () {
 Route::prefix('dashboard')->group(function () {
 
     Route::get('/', 'DashboardController@getDash')->name('getDashboard');
-    
+
 });
 
