@@ -11,6 +11,7 @@ Para esse projeto foi utilizado:
 - MySql 5.7.
 - Vagrant.
 - Ambiente Laravel Homestead (linux).
+- Nenhum pacote Laravel foi adicionado, apenas foi utilizado Laravel em sua configuração padrão.
 
 ## Instalação/Hospedagem
 
