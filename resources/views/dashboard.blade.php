@@ -10,7 +10,7 @@
             @foreach ($reports as $report)
                 <div class="pmo-pic">
                     <div class="pmo-stat bgm-comerc">
-                        <h2 class="m-0 c-white f-40">{{$report->name}}</h2>
+                        <h2 class="m-0 c-verde-comerc f-40">{{$report->name}}</h2>
                         <h2 class="m-0 c-white f-80">{{$report->value}}</h2>
                     </div>
                 </div>
