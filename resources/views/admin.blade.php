@@ -62,5 +62,5 @@
 
 
 @push('js.vendor')
-    <script src="{{ asset('vendors/bootgrid/jquery.bootgrid.updated.min.js') }}" defer></script>
+    <script src="{{ asset('vendors/bootgrid/jquery.bootgrid.updated.js') }}" defer></script>
 @endpush
