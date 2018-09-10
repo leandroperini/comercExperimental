@@ -1,4 +1,4 @@
-## Comerc Experimental
+## HelloWorld Laravel
 
 Esse é um projeto demonstração para exemplificar alguns conceitos básicos de Laravel 5.6
 
@@ -15,18 +15,13 @@ Para esse projeto foi utilizado:
 
 ## Instalação/Hospedagem
 
-Para executar o projeto é necessário um ambiente LAMP(Linux, Apache, MySql, e PHP).
+Para executar o projeto é necessário um ambiente LAMP(Linux, Apache, MySql, e PHP) ou equivalente.
 
 Uma vez configurado, é preciso que seja criado um VHost apontado para a pasta onde os arquivos foram colocados.
 
 Importante lembrar que o laravel possui o webroot na pasta public que está na raiz do projeto. 
 
 Após configuração do arquivo .env com os acessos de banco será necessário executar o comando php artisan migrate
-
-## Live DEMO
-
-Demonstração acessível em: http://comerc-exp.tk
-Para o login basta se registrar com qualquer email e poderá navegar pelo projeto.
 
 ## Segurança e Vulnerabilidades
 
